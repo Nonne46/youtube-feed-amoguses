@@ -9,6 +9,21 @@
 // @connect      ytstalker.fun
 // ==/UserScript==
 
+// SETTINGS
+const VIDEOS_TO_REPLACE = 3;
+const CHANNEL_ID = "brainfuck.";
+const CHANNEL_NAME = "brainfuck.";
+const CHANNEL_AVATAR =
+  "https://yt3.googleusercontent.com/ytc/AIdro_m2CJ41dQNMOt0edcNqrWE1Su5DftG-IaZQdBT4lmQjH8Y=s160-c-k-c0x00ffffff-no-rj";
+
+const MIN_VIEWS = "50";
+const MAX_VIEWS = "15000";
+const MIN_YEAR = "2011";
+const MAX_YEAR = "2019";
+const EXCLUDE_VERTICAL = true;
+const ONLY_MUSIC = false;
+
+// O0
 const VIDEO_TEMPLATE = `
 <div id="content" class="style-scope ytd-rich-item-renderer"><ytd-rich-grid-media
 		class="style-scope ytd-rich-item-renderer" lockup="true"><!--css-build:shady--><!--css-build:shady-->
@@ -343,20 +358,6 @@ const VIDEO_TEMPLATE = `
 (async function () {
   "use strict";
 
-  // SETTINGS
-  const NUMBER_OF_VIDEOS_TO_REPLACE = 3;
-  const CHANNEL_ID = "brainfuck.";
-  const CHANNEL_NAME = "brainfuck.";
-  const CHANNEL_AVATAR =
-    "https://yt3.googleusercontent.com/ytc/AIdro_m2CJ41dQNMOt0edcNqrWE1Su5DftG-IaZQdBT4lmQjH8Y=s160-c-k-c0x00ffffff-no-rj";
-
-  const MIN_VIEWS = "50";
-  const MAX_VIEWS = "15000";
-  const MIN_YEAR = "2011";
-  const MAX_YEAR = "2019";
-  const EXCLUDE_VERTICAL = true;
-  const ONLY_MUSIC = false;
-
   function gimmeShit(url, options = {}) {
     return new Promise((resolve, reject) => {
       GM_xmlhttpRequest({
@@ -434,11 +435,7 @@ const VIDEO_TEMPLATE = `
     // No amoguses. Sad :-(
     let amoguses = [];
     // Need more amoguses
-    for (
-      let i = 0;
-      i < Math.min(NUMBER_OF_VIDEOS_TO_REPLACE, items.length);
-      i++
-    ) {
+    for (let i = 0; i < Math.min(VIDEOS_TO_REPLACE, items.length); i++) {
       amoguses.push(
         await amogusPlease(
           MIN_VIEWS,
@@ -453,11 +450,7 @@ const VIDEO_TEMPLATE = `
 
     // Plant amogus
     //{"video":{"id":"jkZXd-yYmfE","uploaded":1575348453,"title":"meow meow meow","views":678,"vertical":false,"category":10},"reactions":{"cools":0,"trashes":0}}
-    for (
-      let i = 0;
-      i < Math.min(NUMBER_OF_VIDEOS_TO_REPLACE, items.length);
-      i++
-    ) {
+    for (let i = 0; i < Math.min(VIDEOS_TO_REPLACE, items.length); i++) {
       const itemToReplace = items[indices[i]];
       const amogus = amoguses[i].video;
 
@@ -501,7 +494,7 @@ const VIDEO_TEMPLATE = `
           console.log("so true");
 
           // Schedule mining later
-          const timeout = NUMBER_OF_VIDEOS_TO_REPLACE * 1000 * 1.5;
+          const timeout = VIDEOS_TO_REPLACE * 1000 * 1.5;
           setTimeout(() => {
             startObserving();
           }, timeout);
