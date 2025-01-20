@@ -6,8 +6,8 @@
 // @match        https://www.youtube.com/
 // @grant        GM_xmlhttpRequest
 // @connect      ytstalker.fun
-// @downloadURL https://github.com/Nonne46/youtube-feed-amoguses/raw/refs/heads/master/koiato.js
-// @updateURL https://github.com/Nonne46/youtube-feed-amoguses/raw/refs/heads/master/koiato.js
+// @downloadURL https://github.com/Nonne46/youtube-feed-amoguses/raw/refs/heads/master/koiato.user.js
+// @updateURL https://github.com/Nonne46/youtube-feed-amoguses/raw/refs/heads/master/koiato.user.js
 // ==/UserScript==
 
 // SETTINGS
